@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://b7homyel4vdyl"]
+
+[ext_resource type="Texture2D" uid="uid://bxvtef73yu46o" path="res://Assets/Art/char_standL_1.png" id="1_ay8xs"]
+[ext_resource type="Script" path="res://Game/player.gd" id="1_cc23h"]
+[ext_resource type="Texture2D" uid="uid://y5cn4i3k83wt" path="res://Assets/Art/char_standL_2.png" id="2_6h6hu"]
+[ext_resource type="Texture2D" uid="uid://354ix5f425ir" path="res://Assets/Art/visionlight3.png" id="4_gck34"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5g2a6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ay8xs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6h6hu")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 1.5
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4cmt4"]
+size = Vector2(8, 8)
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_at0kq"]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_pieg5"]
+
+[node name="character" type="CharacterBody2D"]
+script = ExtResource("1_cc23h")
+speed = 40
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+process_mode = 3
+light_mask = 2
+visibility_layer = 2
+sprite_frames = SubResource("SpriteFrames_5g2a6")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.400134
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4cmt4")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture_filter = 1
+energy = 1.5
+shadow_enabled = true
+texture = ExtResource("4_gck34")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_at0kq")
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_pieg5")
