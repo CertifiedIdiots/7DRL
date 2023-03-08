@@ -1,9 +1,11 @@
 2a60927148abd1d33b818b535e306557
-::res://::1677980530
+::res://::1678229469
 icon.svg::CompressedTexture2D::2591376247276522200::1677946293::1677946397::1::::<><>::
-Main.tscn::PackedScene::7564211422974854514::1677980111::0::1::::<><>::uid://dd3pk6x4kjveb<>uid://b7homyel4vdyl
-::res://Assets/::1677971040
-::res://Assets/Art/::1677980530
+Main.tscn::PackedScene::7564211422974854514::1678227839::0::1::::<><>::uid://dd3pk6x4kjveb<>uid://b7homyel4vdyl<>res://Game/actions.gd
+::res://Assets/::1678229469
+::res://Assets/Art/::1678229469
+block_select1.png::CompressedTexture2D::4570678555085978330::1678229464::1678229467::1::::<><>::
+block_select2.png::CompressedTexture2D::403946106258549606::1678229464::1678229469::1::::<><>::
 char_standL_1.png::CompressedTexture2D::4045277099596860224::1677976518::1677976518::1::::<><>::
 char_standL_2.png::CompressedTexture2D::1746609766063341975::1677976518::1677976518::1::::<><>::
 char_standR_1.png::CompressedTexture2D::1747399340613837548::1677976518::1677976518::1::::<><>::
@@ -13,6 +15,8 @@ visionlight2.png::CompressedTexture2D::319986922164099478::1677978735::167797873
 visionlight3.png::CompressedTexture2D::2028995288276379489::1677980528::1677980530::1::::<><>::
 visionlight.png::CompressedTexture2D::2438817561128462583::1677977999::1677978001::1::::<><>::
 ::res://Assets/Audio/::1677971032
-::res://Game/::1677980111
-character.tscn::PackedScene::4647787059093139231::1677980111::0::1::::<><>::uid://bxvtef73yu46o<>res://Game/player.gd<>uid://y5cn4i3k83wt<>uid://etaexml08low
-player.gd::GDScript::-1::1677977903::0::1::::<>Node<>::
+::res://Game/::1678228515
+actions.gd::GDScript::-1::1678228515::0::1::::<>Button<>::
+character.tscn::PackedScene::4647787059093139231::1678226567::0::1::::<><>::uid://bxvtef73yu46o<>res://Game/player.gd<>uid://y5cn4i3k83wt<>uid://354ix5f425ir
+player.gd::GDScript::-1::1677984823::0::1::::<>CharacterBody2D<>::
+wall_block.tscn::PackedScene::5971776943400457186::1678228515::0::1::::<><>::

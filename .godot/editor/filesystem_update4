@@ -1,3 +1,7 @@
 res://Main.tscn
 res://Game/character.tscn
-res://Game/player.gd
+res://Game/actions.gd
+res://Game/wall_block.tscn
+res://Game/walls.gd
+res://Game/wall.gd
+res://Game/game.gd

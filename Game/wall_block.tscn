@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://crc1j8ul188gk"]
+
+[ext_resource type="Script" path="res://Game/wall.gd" id="1_fmkkn"]
+[ext_resource type="Texture2D" uid="uid://dd3pk6x4kjveb" path="res://Assets/Art/tilemap1.png" id="1_gmeg8"]
+[ext_resource type="Texture2D" uid="uid://b6ecn4wy3p0jm" path="res://Assets/Art/block_select1.png" id="2_632u2"]
+[ext_resource type="Texture2D" uid="uid://f0w6y7q73d47" path="res://Assets/Art/block_select2.png" id="3_8epme"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l7p3u"]
+size = Vector2(8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3a5dp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_632u2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8epme")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_b7kos"]
+polygon = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+
+[node name="wall" type="Sprite2D"]
+y_sort_enabled = true
+texture = ExtResource("1_gmeg8")
+region_enabled = true
+region_rect = Rect2(16, 40, 8, 8)
+script = ExtResource("1_fmkkn")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_l7p3u")
+
+[node name="mine overlay" type="AnimatedSprite2D" parent="."]
+process_mode = 3
+process_priority = 1
+visible = false
+modulate = Color(0.670588, 0.670588, 0.670588, 1)
+position = Vector2(-2.38419e-07, -2.38419e-07)
+sprite_frames = SubResource("SpriteFrames_3a5dp")
+frame_progress = 0.963788
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_b7kos")
+
+[connection signal="input_event" from="Area2D" to="." method="mine"]
+[connection signal="mouse_entered" from="Area2D" to="." method="hovered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="unhovered"]
