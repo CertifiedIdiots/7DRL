@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://bucx51fingirh"]
+
+[ext_resource type="Script" path="res://UI/interface.gd" id="1_6pc18"]
+
+[node name="interface" type="CanvasLayer"]
+script = ExtResource("1_6pc18")
+
+[node name="actions" type="HBoxContainer" parent="."]
+anchors_preset = -1
+offset_left = 14.0
+offset_top = 11.0
+offset_right = 478.0
+offset_bottom = 79.0
+
+[node name="mine" type="Button" parent="actions"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="bomb" type="Button" parent="actions"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="bridge" type="Button" parent="actions"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2

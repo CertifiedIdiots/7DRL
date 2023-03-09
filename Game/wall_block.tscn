@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://crc1j8ul188gk"]
+[gd_scene load_steps=8 format=3 uid="uid://c8wb7d12aovs0"]
 
 [ext_resource type="Script" path="res://Game/wall.gd" id="1_fmkkn"]
 [ext_resource type="Texture2D" uid="uid://dd3pk6x4kjveb" path="res://Assets/Art/tilemap1.png" id="1_gmeg8"]
@@ -37,7 +37,7 @@ script = ExtResource("1_fmkkn")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_l7p3u")
 
-[node name="mine overlay" type="AnimatedSprite2D" parent="."]
+[node name="overlay" type="AnimatedSprite2D" parent="."]
 process_mode = 3
 process_priority = 1
 visible = false
@@ -48,7 +48,3 @@ frame_progress = 0.963788
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_b7kos")
-
-[connection signal="input_event" from="Area2D" to="." method="mine"]
-[connection signal="mouse_entered" from="Area2D" to="." method="hovered"]
-[connection signal="mouse_exited" from="Area2D" to="." method="unhovered"]

@@ -1,9 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://b7homyel4vdyl"]
+[gd_scene load_steps=14 format=3 uid="uid://t134ofcbj60u"]
 
 [ext_resource type="Texture2D" uid="uid://bxvtef73yu46o" path="res://Assets/Art/char_standL_1.png" id="1_ay8xs"]
 [ext_resource type="Script" path="res://Game/player.gd" id="1_cc23h"]
 [ext_resource type="Texture2D" uid="uid://y5cn4i3k83wt" path="res://Assets/Art/char_standL_2.png" id="2_6h6hu"]
 [ext_resource type="Texture2D" uid="uid://354ix5f425ir" path="res://Assets/Art/visionlight3.png" id="4_gck34"]
+[ext_resource type="Texture2D" uid="uid://rfbgsw3edpob" path="res://Assets/Art/bomb_preview1.png" id="5_hhwpf"]
+[ext_resource type="Texture2D" uid="uid://dnhp7son0jo8e" path="res://Assets/Art/bomb_preview2.png" id="6_en2dc"]
+[ext_resource type="Texture2D" uid="uid://c2uciubpved5g" path="res://Assets/Art/bomb_preview3.png" id="7_f217q"]
+[ext_resource type="Texture2D" uid="uid://cyrcv6xnuy0jy" path="res://Assets/Art/bomb_radius1.png" id="8_v0g31"]
+[ext_resource type="Texture2D" uid="uid://cxslailtg5ore" path="res://Assets/Art/bomb_radius2.png" id="9_matln"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5g2a6"]
 animations = [{
@@ -22,10 +27,41 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4cmt4"]
 size = Vector2(8, 8)
 
-[node name="character" type="CharacterBody2D"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_r8tcp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_hhwpf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_en2dc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_f217q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ago7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_v0g31")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_matln")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="player" type="CharacterBody2D"]
 z_index = 1
+y_sort_enabled = true
 script = ExtResource("1_cc23h")
-speed = 40
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 process_mode = 3
@@ -43,7 +79,36 @@ shape = SubResource("RectangleShape2D_4cmt4")
 texture_filter = 1
 energy = 1.5
 shadow_enabled = true
+shadow_filter = 2
+shadow_filter_smooth = 2.0
 texture = ExtResource("4_gck34")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 collide_with_areas = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(7, 7)
+
+[node name="bomb" type="Sprite2D" parent="."]
+y_sort_enabled = true
+position = Vector2(8, 0)
+
+[node name="preview" type="AnimatedSprite2D" parent="bomb"]
+process_mode = 3
+process_priority = 1
+modulate = Color(1, 1, 1, 0.67451)
+show_behind_parent = true
+light_mask = 2
+visibility_layer = 2
+y_sort_enabled = true
+position = Vector2(0, -1)
+sprite_frames = SubResource("SpriteFrames_r8tcp")
+
+[node name="radius" type="AnimatedSprite2D" parent="bomb"]
+process_mode = 3
+process_priority = 1
+modulate = Color(1, 1, 1, 0.67451)
+light_mask = 2
+visibility_layer = 2
+z_index = -1
+sprite_frames = SubResource("SpriteFrames_7ago7")
