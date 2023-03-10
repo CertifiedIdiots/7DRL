@@ -6,7 +6,6 @@
 script = ExtResource("1_6pc18")
 
 [node name="actions" type="HBoxContainer" parent="."]
-anchors_preset = -1
 offset_left = 14.0
 offset_top = 11.0
 offset_right = 478.0

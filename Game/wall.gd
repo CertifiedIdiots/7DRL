@@ -9,4 +9,4 @@ func _ready():
 	
 func selected():
 	block_selected = true
-	$"overlay".set_visible(true)
+	$overlay.set_visible(true)

@@ -5,7 +5,7 @@ extends Node
 
 @export var mine_cooldown = 0
 @export var bombs = 3
-@export var bridges = 5
+@export var bridges = 10
 
 signal pass_time
 

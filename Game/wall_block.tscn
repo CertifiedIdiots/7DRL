@@ -25,14 +25,14 @@ animations = [{
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_b7kos"]
 polygon = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 
-[node name="wall" type="Sprite2D"]
+[node name="wall" type="Sprite2D" groups=["wall"]]
 y_sort_enabled = true
 texture = ExtResource("1_gmeg8")
 region_enabled = true
 region_rect = Rect2(16, 40, 8, 8)
 script = ExtResource("1_fmkkn")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["wall"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_l7p3u")

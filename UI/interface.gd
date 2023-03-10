@@ -19,12 +19,20 @@ func update():
 		$actions/mine.set_text("Mine")
 	if player.mine_mode:
 		$actions/mine.add_theme_color_override("font_color", Color("LIGHT_GREEN"))
+		
 	if player.bomb_mode:
 		$actions/bomb.add_theme_color_override("font_color", Color("LIGHT_GREEN"))
 	else:
 		$actions/bomb.add_theme_color_override("font_color", Color("LIGHT_BLUE"))
 	if game.bombs == 0:
 		$actions/bomb.add_theme_color_override("font_color", Color("RED"))
+		
+	if player.bridge_mode:
+		$actions/bridge.add_theme_color_override("font_color", Color("LIGHT_GREEN"))
+	else:
+		$actions/bridge.add_theme_color_override("font_color", Color("LIGHT_BLUE"))
+	if game.bridges == 0:
+		$actions/bridge.add_theme_color_override("font_color", Color("RED"))
 		
 	$actions/bomb.set_text(str("Bomb   [ ", game.bombs, " ]"))
 	$actions/bridge.set_text(str("Bridge   [ ", game.bridges, " ]"))

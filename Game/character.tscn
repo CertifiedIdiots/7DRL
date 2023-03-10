@@ -1,14 +1,21 @@
-[gd_scene load_steps=14 format=3 uid="uid://t134ofcbj60u"]
+[gd_scene load_steps=25 format=3 uid="uid://t134ofcbj60u"]
 
-[ext_resource type="Texture2D" uid="uid://bxvtef73yu46o" path="res://Assets/Art/char_standL_1.png" id="1_ay8xs"]
+[ext_resource type="Texture2D" uid="uid://b1b48iifgrofn" path="res://Assets/Art/char_standL_1.png" id="1_ay8xs"]
 [ext_resource type="Script" path="res://Game/player.gd" id="1_cc23h"]
-[ext_resource type="Texture2D" uid="uid://y5cn4i3k83wt" path="res://Assets/Art/char_standL_2.png" id="2_6h6hu"]
+[ext_resource type="Texture2D" uid="uid://tt5w0cof1gq0" path="res://Assets/Art/char_standL_2.png" id="2_6h6hu"]
 [ext_resource type="Texture2D" uid="uid://354ix5f425ir" path="res://Assets/Art/visionlight3.png" id="4_gck34"]
 [ext_resource type="Texture2D" uid="uid://rfbgsw3edpob" path="res://Assets/Art/bomb_preview1.png" id="5_hhwpf"]
+[ext_resource type="Texture2D" uid="uid://djlvqy0m5nleh" path="res://Assets/Art/playershadow.png" id="5_o4ege"]
 [ext_resource type="Texture2D" uid="uid://dnhp7son0jo8e" path="res://Assets/Art/bomb_preview2.png" id="6_en2dc"]
 [ext_resource type="Texture2D" uid="uid://c2uciubpved5g" path="res://Assets/Art/bomb_preview3.png" id="7_f217q"]
 [ext_resource type="Texture2D" uid="uid://cyrcv6xnuy0jy" path="res://Assets/Art/bomb_radius1.png" id="8_v0g31"]
 [ext_resource type="Texture2D" uid="uid://cxslailtg5ore" path="res://Assets/Art/bomb_radius2.png" id="9_matln"]
+[ext_resource type="Texture2D" uid="uid://di12knugmndjc" path="res://Assets/Art/bridge_preview_side3.png" id="11_wqsn7"]
+[ext_resource type="Texture2D" uid="uid://do14eseap2yjp" path="res://Assets/Art/bridge_preview_up3.png" id="11_xy273"]
+[ext_resource type="Texture2D" uid="uid://cn5dqqvrsxj45" path="res://Assets/Art/bridge_preview_side2.png" id="12_ldkt5"]
+[ext_resource type="Texture2D" uid="uid://c426wa2ryemcr" path="res://Assets/Art/bridge_preview_up2.png" id="12_lmob5"]
+[ext_resource type="Texture2D" uid="uid://ddifcfwyi1h7g" path="res://Assets/Art/bridge_preview_side1.png" id="13_j1c1n"]
+[ext_resource type="Texture2D" uid="uid://bnbw6qr04v03a" path="res://Assets/Art/bridge_preview_up1.png" id="13_nn61t"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5g2a6"]
 animations = [{
@@ -58,6 +65,74 @@ animations = [{
 "speed": 2.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_rm34f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_xy273")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_lmob5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_nn61t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_61bto"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_xy273")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_nn61t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_lmob5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wbvpf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_j1c1n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ldkt5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_wqsn7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wvsp8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_wqsn7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_ldkt5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_j1c1n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
 [node name="player" type="CharacterBody2D"]
 z_index = 1
 y_sort_enabled = true
@@ -70,7 +145,13 @@ visibility_layer = 2
 sprite_frames = SubResource("SpriteFrames_5g2a6")
 animation = &"new_animation"
 autoplay = "new_animation"
-frame_progress = 0.245136
+frame = 1
+frame_progress = 0.451506
+
+[node name="Playershadow" type="Sprite2D" parent="AnimatedSprite2D"]
+modulate = Color(1, 1, 1, 0.556863)
+show_behind_parent = true
+texture = ExtResource("5_o4ege")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_4cmt4")
@@ -112,3 +193,40 @@ light_mask = 2
 visibility_layer = 2
 z_index = -1
 sprite_frames = SubResource("SpriteFrames_7ago7")
+
+[node name="bridge" type="Sprite2D" parent="."]
+show_behind_parent = true
+light_mask = 2
+visibility_layer = 2
+
+[node name="up" type="AnimatedSprite2D" parent="bridge"]
+show_behind_parent = true
+light_mask = 2
+z_as_relative = false
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_rm34f")
+frame_progress = 0.780057
+
+[node name="down" type="AnimatedSprite2D" parent="bridge"]
+show_behind_parent = true
+light_mask = 2
+z_as_relative = false
+position = Vector2(0, 8)
+sprite_frames = SubResource("SpriteFrames_61bto")
+frame_progress = 0.791321
+
+[node name="left" type="AnimatedSprite2D" parent="bridge"]
+show_behind_parent = true
+light_mask = 2
+z_as_relative = false
+position = Vector2(-8, 0)
+sprite_frames = SubResource("SpriteFrames_wbvpf")
+frame_progress = 0.344536
+
+[node name="right" type="AnimatedSprite2D" parent="bridge"]
+show_behind_parent = true
+light_mask = 2
+z_as_relative = false
+position = Vector2(8, 0)
+sprite_frames = SubResource("SpriteFrames_wvsp8")
+frame_progress = 0.959101

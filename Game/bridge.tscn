@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://luiwj1dq8ti"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_r2ch6"]
+load_path = "res://.godot/imported/bridges1.png-6c2ae6af13c1c0938e6b7c41e497ef79.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6ymlx"]
+load_path = "res://.godot/imported/bridges1.png-6c2ae6af13c1c0938e6b7c41e497ef79.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lnljx"]
+load_path = "res://.godot/imported/bridges1.png-6c2ae6af13c1c0938e6b7c41e497ef79.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_13h2j"]
+load_path = "res://.godot/imported/bridges1.png-6c2ae6af13c1c0938e6b7c41e497ef79.ctex"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0w3qp"]
+size = Vector2(8, 8)
+
+[node name="bridge" type="Node2D" groups=["bridge"]]
+light_mask = 4
+visibility_layer = 4
+
+[node name="up" type="Sprite2D" parent="."]
+modulate = Color(0.211765, 0.211765, 0.239216, 1)
+texture = SubResource("CompressedTexture2D_r2ch6")
+region_enabled = true
+region_rect = Rect2(8, 0, 8, 8)
+
+[node name="down" type="Sprite2D" parent="."]
+modulate = Color(0.211765, 0.211765, 0.239216, 1)
+texture = SubResource("CompressedTexture2D_6ymlx")
+region_enabled = true
+region_rect = Rect2(8, 16, 8, 8)
+
+[node name="left" type="Sprite2D" parent="."]
+modulate = Color(0.211765, 0.211765, 0.239216, 1)
+texture = SubResource("CompressedTexture2D_lnljx")
+region_enabled = true
+region_rect = Rect2(0, 8, 8, 8)
+
+[node name="right" type="Sprite2D" parent="."]
+modulate = Color(0.211765, 0.211765, 0.239216, 1)
+texture = SubResource("CompressedTexture2D_13h2j")
+region_enabled = true
+region_rect = Rect2(16, 8, 8, 8)
+
+[node name="Area2D" type="Area2D" parent="." groups=["bridge"]]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+shape = SubResource("RectangleShape2D_0w3qp")

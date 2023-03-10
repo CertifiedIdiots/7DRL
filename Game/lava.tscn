@@ -1,0 +1,159 @@
+[gd_scene load_steps=16 format=3 uid="uid://bw288bgsx3uni"]
+
+[ext_resource type="Script" path="res://Game/lava.gd" id="1_1j8rh"]
+[ext_resource type="Texture2D" uid="uid://d00ujsxowaxrn" path="res://Assets/Art/lava1.png" id="2_s15vv"]
+[ext_resource type="Texture2D" uid="uid://bsonnbwy8qkqg" path="res://Assets/Art/lava2.png" id="3_fo002"]
+[ext_resource type="Texture2D" uid="uid://d3b6gawtle8" path="res://Assets/Art/lava3.png" id="4_xpb7i"]
+[ext_resource type="Texture2D" uid="uid://cimex47qu2gj8" path="res://Assets/Art/lava4.png" id="5_tqcas"]
+[ext_resource type="Texture2D" uid="uid://354ix5f425ir" path="res://Assets/Art/visionlight3.png" id="6_pu8b5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pverb"]
+atlas = ExtResource("2_s15vv")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3y1dj"]
+atlas = ExtResource("3_fo002")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llnp8"]
+atlas = ExtResource("5_tqcas")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n7kwt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pverb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3y1dj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3y1dj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llnp8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y7cvc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3y1dj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pverb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3y1dj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llnp8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbtqj"]
+atlas = ExtResource("4_xpb7i")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_60x1a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbtqj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pverb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3y1dj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llnp8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j6tbu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llnp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pverb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3y1dj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3y1dj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ucc24"]
+size = Vector2(10, 10)
+
+[node name="lava" type="Node2D" groups=["lava"]]
+process_mode = 3
+light_mask = 2
+visibility_layer = 2
+script = ExtResource("1_1j8rh")
+
+[node name="types" type="Node2D" parent="."]
+
+[node name="type1" type="AnimatedSprite2D" parent="types"]
+light_mask = 4
+visibility_layer = 4
+sprite_frames = SubResource("SpriteFrames_n7kwt")
+frame_progress = 0.137875
+
+[node name="type2" type="AnimatedSprite2D" parent="types"]
+light_mask = 4
+visibility_layer = 4
+sprite_frames = SubResource("SpriteFrames_y7cvc")
+frame_progress = 0.2015
+
+[node name="type3" type="AnimatedSprite2D" parent="types"]
+light_mask = 4
+visibility_layer = 4
+sprite_frames = SubResource("SpriteFrames_60x1a")
+frame_progress = 0.00572775
+
+[node name="type4" type="AnimatedSprite2D" parent="types"]
+light_mask = 4
+visibility_layer = 4
+sprite_frames = SubResource("SpriteFrames_j6tbu")
+frame_progress = 0.253245
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+light_mask = 4
+visibility_layer = 4
+color = Color(2.1, 0.15, 0.1, 1)
+energy = 0.5
+shadow_enabled = true
+shadow_filter = 2
+shadow_filter_smooth = 2.0
+texture = ExtResource("6_pu8b5")
+texture_scale = 2.0
+
+[node name="Area2D" type="Area2D" parent="." groups=["lava"]]
+visible = false
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" groups=["lava"]]
+shape = SubResource("RectangleShape2D_ucc24")
