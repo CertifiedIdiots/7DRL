@@ -167,6 +167,10 @@ texture = ExtResource("4_gck34")
 [node name="RayCast2D" type="RayCast2D" parent="."]
 collide_with_areas = true
 
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+collision_mask = 9
+collide_with_areas = true
+
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(7, 7)
 
@@ -194,12 +198,13 @@ visibility_layer = 2
 z_index = -1
 sprite_frames = SubResource("SpriteFrames_7ago7")
 
-[node name="bridge" type="Sprite2D" parent="."]
+[node name="rail" type="Sprite2D" parent="."]
 show_behind_parent = true
 light_mask = 2
 visibility_layer = 2
 
-[node name="up" type="AnimatedSprite2D" parent="bridge"]
+[node name="up" type="AnimatedSprite2D" parent="rail"]
+modulate = Color(1, 1, 1, 0.827451)
 show_behind_parent = true
 light_mask = 2
 z_as_relative = false
@@ -207,7 +212,8 @@ position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_rm34f")
 frame_progress = 0.780057
 
-[node name="down" type="AnimatedSprite2D" parent="bridge"]
+[node name="down" type="AnimatedSprite2D" parent="rail"]
+modulate = Color(1, 1, 1, 0.827451)
 show_behind_parent = true
 light_mask = 2
 z_as_relative = false
@@ -215,7 +221,8 @@ position = Vector2(0, 8)
 sprite_frames = SubResource("SpriteFrames_61bto")
 frame_progress = 0.791321
 
-[node name="left" type="AnimatedSprite2D" parent="bridge"]
+[node name="left" type="AnimatedSprite2D" parent="rail"]
+modulate = Color(1, 1, 1, 0.827451)
 show_behind_parent = true
 light_mask = 2
 z_as_relative = false
@@ -223,7 +230,8 @@ position = Vector2(-8, 0)
 sprite_frames = SubResource("SpriteFrames_wbvpf")
 frame_progress = 0.344536
 
-[node name="right" type="AnimatedSprite2D" parent="bridge"]
+[node name="right" type="AnimatedSprite2D" parent="rail"]
+modulate = Color(1, 1, 1, 0.827451)
 show_behind_parent = true
 light_mask = 2
 z_as_relative = false

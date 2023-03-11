@@ -4,11 +4,12 @@ extends CharacterBody2D
 @onready var interface = $"/root/Node2D/interface"
 var tile_size = 8
 @onready var ray = $RayCast2D
+@onready var ray2 = $RayCast2D2
 var bomb_object = preload("res://Game/bomb.tscn")
-var bridge_object = preload("res://Game/bridge.tscn")
+var rail_object = preload("res://Game/rail.tscn")
 
 var mine_mode = false
-var bridge_mode = false
+var rail_mode = false
 var bomb_mode = false
 
 var bomb_valid = false
@@ -20,13 +21,14 @@ var inputs = {"right": Vector2.RIGHT,
 			
 func _ready():
 	ray.target_position = Vector2(0, 8)
+	ray2.target_position = Vector2(0, 8)
 	$bomb.set_visible(false)
 	$bomb/preview.play()
 	$bomb/radius.play()
-	$bridge/up.play()
-	$bridge/down.play()
-	$bridge/left.play()
-	$bridge/right.play()
+	$rail/up.play()
+	$rail/down.play()
+	$rail/left.play()
+	$rail/right.play()
 	position = position.snapped(Vector2.ONE * tile_size)
 	position += Vector2.ONE * tile_size/2
 			
@@ -47,29 +49,29 @@ func _process(delta):
 		if ray.get_collider().is_in_group("wall"):
 			ray.get_collider().get_parent().selected()
 			
-	if bridge_mode:
+	if rail_mode:
 		var directions = [
 			Vector2(0, -8),
 			Vector2(0, 8),
 			Vector2(-8, 0),
 			Vector2(8, 0)
 			]
-		if !ray.is_colliding() or ray.get_collider().is_in_group("lava"):
+		if !ray.is_colliding() or ray2.get_collider().is_in_group("lava"):
 			for direction in directions:
-				if ray.target_position == direction:
-					$bridge.get_child(directions.find(direction)).set_visible(true)
+				if ray.target_position == direction and !ray2.is_colliding():
+					$rail.get_child(directions.find(direction)).set_visible(true)
 				else:
-					$bridge.get_child(directions.find(direction)).set_visible(false)
+					$rail.get_child(directions.find(direction)).set_visible(false)
 		else:
-			$bridge/up.set_visible(false)
-			$bridge/down.set_visible(false)
-			$bridge/left.set_visible(false)
-			$bridge/right.set_visible(false)
+			$rail/up.set_visible(false)
+			$rail/down.set_visible(false)
+			$rail/left.set_visible(false)
+			$rail/right.set_visible(false)
 	else:
-		$bridge/up.set_visible(false)
-		$bridge/down.set_visible(false)
-		$bridge/left.set_visible(false)
-		$bridge/right.set_visible(false)
+		$rail/up.set_visible(false)
+		$rail/down.set_visible(false)
+		$rail/left.set_visible(false)
+		$rail/right.set_visible(false)
 		
 		
 
@@ -81,7 +83,7 @@ func _unhandled_input(event):
 		if !mine_mode and game.mine_cooldown <= 0:
 			mine_mode = true
 			bomb_mode = false
-			bridge_mode = false
+			rail_mode = false
 		else:
 			mine_mode = false
 	
@@ -89,27 +91,29 @@ func _unhandled_input(event):
 		if !bomb_mode and game.bombs >= 1:
 			bomb_mode = true
 			mine_mode = false
-			bridge_mode = false
+			rail_mode = false
 		else:
 			bomb_mode = false
 
-	if event.is_action_pressed("bridge"):
-		if !bridge_mode and game.bridges >= 1:
-			bridge_mode = true
+	if event.is_action_pressed("rail"):
+		if !rail_mode and game.rails >= 1:
+			rail_mode = true
 			mine_mode = false
 			bomb_mode = false
 		else:
-			bridge_mode = false
+			rail_mode = false
 	
 	if event.is_action_pressed("action"):
 		mine()
 		bomb()
-		bridge()
+		rail()
 
 func move(direction):
 	ray.target_position = inputs[direction] * tile_size
+	ray2.target_position = inputs[direction] * tile_size
 	ray.force_raycast_update()
-	if !ray.is_colliding() and !bomb_mode and !bridge_mode:
+	ray2.force_raycast_update()
+	if !ray.is_colliding() and !bomb_mode and !rail_mode:
 		position += inputs[direction] * tile_size
 		game.end_turn()
 		
@@ -130,22 +134,25 @@ func bomb():
 		bomb_mode = false
 		game.bombs -= 1
 
-func bridge():
+func rail():
+	var rail = rail_object.instantiate()
+	var target_pos = self.position + ray.target_position
 	var directions = [
 		Vector2(0, -8),
 		Vector2(0, 8),
 		Vector2(-8, 0),
 		Vector2(8, 0)
 	]
-	if bridge_mode and !ray.is_colliding():
-		var bridge = bridge_object.instantiate()
-		var target_pos = self.position + ray.target_position
-		for direction in directions:
-			if ray.target_position == direction:
-				bridge.get_child(directions.find(direction)).set_visible(true)
-			else:
-				bridge.get_child(directions.find(direction)).set_visible(false)
-		bridge.set_position(target_pos)
-		game.add_child(bridge)
-		bridge_mode = false
-		game.bridges -= 1
+	if rail_mode and !ray.is_colliding() and !ray2.is_colliding():
+		if ray.target_position == directions[0] or ray.target_position == directions[1]:
+			rail.get_child(0).set_visible(true)
+		else:
+			rail.get_child(0).set_visible(false)
+		if ray.target_position == directions[2] or ray.target_position == directions[3]:
+			rail.get_child(1).set_visible(true)
+		else:
+			rail.get_child(1).set_visible(false)
+		rail.set_position(target_pos)
+		game.add_child(rail)
+		rail_mode = false
+		game.rails -= 1

@@ -21,7 +21,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="bridge" type="Button" parent="actions"]
+[node name="rail" type="Button" parent="actions"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2

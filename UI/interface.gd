@@ -7,8 +7,8 @@ func _ready():
 	$actions/mine.add_theme_color_override("font_color", Color("LIGHT_BLUE"))
 	$actions/bomb.set_text(str("Bomb   [ ", game.bombs, " ]"))
 	$actions/bomb.add_theme_color_override("font_color", Color("LIGHT_BLUE"))
-	$actions/bridge.set_text("Bridge")
-	$actions/bridge.add_theme_color_override("font_color", Color("LIGHT_BLUE"))
+	$actions/rail.set_text("Rails")
+	$actions/rail.add_theme_color_override("font_color", Color("LIGHT_BLUE"))
 
 func update():
 	if game.mine_cooldown > 0:
@@ -27,12 +27,12 @@ func update():
 	if game.bombs == 0:
 		$actions/bomb.add_theme_color_override("font_color", Color("RED"))
 		
-	if player.bridge_mode:
-		$actions/bridge.add_theme_color_override("font_color", Color("LIGHT_GREEN"))
+	if player.rail_mode:
+		$actions/rail.add_theme_color_override("font_color", Color("LIGHT_GREEN"))
 	else:
-		$actions/bridge.add_theme_color_override("font_color", Color("LIGHT_BLUE"))
-	if game.bridges == 0:
-		$actions/bridge.add_theme_color_override("font_color", Color("RED"))
+		$actions/rail.add_theme_color_override("font_color", Color("LIGHT_BLUE"))
+	if game.rails == 0:
+		$actions/rail.add_theme_color_override("font_color", Color("RED"))
 		
-	$actions/bomb.set_text(str("Bomb   [ ", game.bombs, " ]"))
-	$actions/bridge.set_text(str("Bridge   [ ", game.bridges, " ]"))
+	$actions/bomb.set_text(str("Bombs   [ ", game.bombs, " ]"))
+	$actions/rail.set_text(str("Rails   [ ", game.rails, " ]"))

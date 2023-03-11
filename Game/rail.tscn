@@ -1,0 +1,81 @@
+[gd_scene load_steps=9 format=3 uid="uid://luiwj1dq8ti"]
+
+[ext_resource type="Script" path="res://Game/rail.gd" id="1_ik875"]
+[ext_resource type="Texture2D" uid="uid://c4a3lvo4b4srn" path="res://Assets/Art/rails/rail_up.png" id="1_tr3sy"]
+[ext_resource type="Texture2D" uid="uid://bbu3apxscbfat" path="res://Assets/Art/rails/rail_side.png" id="3_gital"]
+[ext_resource type="Texture2D" uid="uid://f2v6glrc5o3q" path="res://Assets/Art/rails/rail_down_right.png" id="4_wif6l"]
+[ext_resource type="Texture2D" uid="uid://dsjobbull1057" path="res://Assets/Art/rails/rail_down_left.png" id="5_k6eth"]
+[ext_resource type="Texture2D" uid="uid://du4c04s4h578y" path="res://Assets/Art/rails/rail_up_right.png" id="6_kupuc"]
+[ext_resource type="Texture2D" uid="uid://dfpsm1dmsnuud" path="res://Assets/Art/rails/rail_up_left.png" id="7_r3tp8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0w3qp"]
+size = Vector2(8, 8)
+
+[node name="rail" type="Node2D" groups=["bridge"]]
+light_mask = 4
+visibility_layer = 4
+script = ExtResource("1_ik875")
+
+[node name="up" type="Sprite2D" parent="." groups=["rail", "up"]]
+visible = false
+modulate = Color(0.258824, 0.258824, 0.270588, 1)
+z_as_relative = false
+texture = ExtResource("1_tr3sy")
+region_rect = Rect2(8, 0, 8, 8)
+
+[node name="side" type="Sprite2D" parent="." groups=["rail", "side"]]
+visible = false
+modulate = Color(0.258824, 0.258824, 0.270588, 1)
+texture = ExtResource("3_gital")
+region_rect = Rect2(8, 0, 8, 8)
+
+[node name="down_right" type="Sprite2D" parent="." groups=["rail"]]
+visible = false
+modulate = Color(0.258824, 0.258824, 0.270588, 1)
+texture = ExtResource("4_wif6l")
+region_rect = Rect2(8, 0, 8, 8)
+
+[node name="down_left" type="Sprite2D" parent="." groups=["rail"]]
+visible = false
+modulate = Color(0.258824, 0.258824, 0.270588, 1)
+texture = ExtResource("5_k6eth")
+region_rect = Rect2(8, 0, 8, 8)
+
+[node name="up_right" type="Sprite2D" parent="." groups=["rail"]]
+visible = false
+modulate = Color(0.258824, 0.258824, 0.270588, 1)
+texture = ExtResource("6_kupuc")
+region_rect = Rect2(8, 0, 8, 8)
+
+[node name="up_left" type="Sprite2D" parent="." groups=["rail"]]
+visible = false
+modulate = Color(0.258824, 0.258824, 0.270588, 1)
+texture = ExtResource("7_r3tp8")
+region_rect = Rect2(8, 0, 8, 8)
+
+[node name="Area2D" type="Area2D" parent="." groups=["bridge"]]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_0w3qp")
+
+[node name="ray_up" type="RayCast2D" parent="."]
+target_position = Vector2(0, -8)
+collision_mask = 8
+collide_with_areas = true
+
+[node name="ray_down" type="RayCast2D" parent="."]
+target_position = Vector2(0, 8)
+collision_mask = 8
+collide_with_areas = true
+
+[node name="ray_left" type="RayCast2D" parent="."]
+target_position = Vector2(-8, 0)
+collision_mask = 8
+collide_with_areas = true
+
+[node name="ray_right" type="RayCast2D" parent="."]
+target_position = Vector2(8, 0)
+collision_mask = 8
+collide_with_areas = true

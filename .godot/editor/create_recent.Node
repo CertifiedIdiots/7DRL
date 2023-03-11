@@ -1,3 +1,8 @@
+RayCast2D
+Camera2D
+SubViewport
+SubViewportContainer
+Control
 CollisionShape2D
 Area2D
 AnimatedSprite2D
@@ -13,10 +18,7 @@ RichTextLabel
 CanvasLayer
 HBoxContainer
 Container
-Control
 LightOccluder2D
-Camera2D
 AnimationPlayer
 AnimationTree
-RayCast2D
 CharacterBody2D

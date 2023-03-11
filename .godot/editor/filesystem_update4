@@ -4,9 +4,10 @@ res://Game/bomb.tscn
 res://Game/wall_block.tscn
 res://UI/interface.tscn
 res://Game/lava.tscn
-res://Game/lava.gd
-res://Game/player.gd
-res://Game/wall.gd
 res://Game/bridge.tscn
+res://Game/minimap.tscn
+res://Game/player.gd
+res://Game/rail.tscn
 res://Game/game.gd
 res://UI/interface.gd
+res://Game/rail.gd
