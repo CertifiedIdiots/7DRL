@@ -26,7 +26,7 @@ func _process(delta):
 	for block in nearby_blocks:
 		if !block.is_in_group("lava"):
 			nearby_blocks.erase(block)
-	if nearby_blocks.size() <= 4:
+	if nearby_blocks.size() <= 3:
 		$PointLight2D.set_visible(true)
 	else:
 		$PointLight2D.set_visible(false)

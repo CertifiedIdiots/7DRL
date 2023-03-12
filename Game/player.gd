@@ -29,6 +29,10 @@ func _ready():
 	$rail/down.play()
 	$rail/left.play()
 	$rail/right.play()
+	$riding_up.play()
+	$riding_down.play()
+	$riding_left.play()
+	$riding_up.play()
 	position = position.snapped(Vector2.ONE * tile_size)
 	position += Vector2.ONE * tile_size/2
 			
@@ -79,6 +83,12 @@ func _unhandled_input(event):
 	for direction in inputs.keys():
 		if event.is_action_pressed(direction):
 			move(direction)
+			if ray2.target_position == Vector2(-8, 0):
+				$idle_right.set_visible(false)
+				$idle_left.set_visible(true)
+			elif ray2.target_position == Vector2(8, 0):
+				$idle_left.set_visible(false)
+				$idle_right.set_visible(true)
 	if event.is_action_pressed("mine"):
 		if !mine_mode and game.mine_cooldown <= 0:
 			mine_mode = true
@@ -119,10 +129,11 @@ func move(direction):
 		
 func mine():
 	if mine_mode and ray.is_colliding():
-		if ray.get_collider().get_parent().block_selected:
-			ray.get_collider().get_parent().queue_free()
-			mine_mode = false
-			game.mine_cooldown += 3
+		if ray.get_collider().is_in_group("wall"):
+			if ray.get_collider().get_parent().block_selected:
+				ray.get_collider().get_parent().queue_free()
+				mine_mode = false
+				game.mine_cooldown += 3
 
 func bomb():
 	if bomb_mode and bomb_valid:

@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bkswrs2uj5ovu"]
+
+[ext_resource type="Texture2D" uid="uid://dt0ns6qnn3sdr" path="res://Assets/Art/crate1.png" id="1_465y0"]
+[ext_resource type="Script" path="res://Game/lootcrate.gd" id="1_oa8xs"]
+[ext_resource type="Texture2D" uid="uid://ds50mo0oeqgd3" path="res://Assets/Art/crate2.png" id="2_g1hxi"]
+[ext_resource type="Texture2D" uid="uid://dc5u158vir51y" path="res://Assets/Art/bomblight1.png" id="3_k4skr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_38tfi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_465y0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_g1hxi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="lootcrate" type="Sprite2D"]
+script = ExtResource("1_oa8xs")
+
+[node name="crate" type="AnimatedSprite2D" parent="."]
+light_mask = 2
+visibility_layer = 2
+position = Vector2(0, -1.5)
+sprite_frames = SubResource("SpriteFrames_38tfi")
+frame_progress = 0.514294
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0.647059, 0.121569, 1)
+energy = 2.0
+texture = ExtResource("3_k4skr")

@@ -1,4 +1,13 @@
 res://Main.tscn
-res://Game/tile_map.gd
-res://Game/bomb.tscn
+res://Game/tile_map.tscn
+res://Game/lava.tscn
+res://Game/rail.tscn
+res://Game/character.tscn
 res://Game/wall_block.tscn
+res://Game/minecart.tscn
+res://Game/player.gd
+res://Game/lootcrate.tscn
+res://Game/lootcrate.gd
+res://Game/lava.gd
+res://Game/tile_map.gd
+res://Game/game.gd

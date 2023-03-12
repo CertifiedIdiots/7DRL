@@ -53,7 +53,7 @@ func _ready():
 				wall.set_position(Vector2i(x*8+4, y*8+4))
 				game.get_node("Walls").add_child.call_deferred(wall)
 				map[x][y] = wall
-			if k > 0.15:
+			if k > 0.30:
 				var lava = lava_object.instantiate()
 				lava.set_position(Vector2i(x*8+4, y*8+4))
 

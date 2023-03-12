@@ -4,7 +4,7 @@ extends Node
 @onready var player = $"/root/Node2D/character"
 
 @export var mine_cooldown = 0
-@export var bombs = 3
+@export var bombs = 10
 @export var rails = 30
 
 signal pass_time

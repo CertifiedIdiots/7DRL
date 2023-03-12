@@ -1,11 +1,13 @@
-[gd_scene load_steps=25 format=3 uid="uid://t134ofcbj60u"]
+[gd_scene load_steps=40 format=3 uid="uid://t134ofcbj60u"]
 
 [ext_resource type="Texture2D" uid="uid://b1b48iifgrofn" path="res://Assets/Art/char_standL_1.png" id="1_ay8xs"]
 [ext_resource type="Script" path="res://Game/player.gd" id="1_cc23h"]
 [ext_resource type="Texture2D" uid="uid://tt5w0cof1gq0" path="res://Assets/Art/char_standL_2.png" id="2_6h6hu"]
 [ext_resource type="Texture2D" uid="uid://354ix5f425ir" path="res://Assets/Art/visionlight3.png" id="4_gck34"]
+[ext_resource type="Texture2D" uid="uid://i3euq16k3tjr" path="res://Assets/Art/char_standR_1.png" id="5_51nit"]
 [ext_resource type="Texture2D" uid="uid://rfbgsw3edpob" path="res://Assets/Art/bomb_preview1.png" id="5_hhwpf"]
 [ext_resource type="Texture2D" uid="uid://djlvqy0m5nleh" path="res://Assets/Art/playershadow.png" id="5_o4ege"]
+[ext_resource type="Texture2D" uid="uid://dkgxd32b2ain5" path="res://Assets/Art/char_standR_2.png" id="6_2vli2"]
 [ext_resource type="Texture2D" uid="uid://dnhp7son0jo8e" path="res://Assets/Art/bomb_preview2.png" id="6_en2dc"]
 [ext_resource type="Texture2D" uid="uid://c2uciubpved5g" path="res://Assets/Art/bomb_preview3.png" id="7_f217q"]
 [ext_resource type="Texture2D" uid="uid://cyrcv6xnuy0jy" path="res://Assets/Art/bomb_radius1.png" id="8_v0g31"]
@@ -16,6 +18,14 @@
 [ext_resource type="Texture2D" uid="uid://c426wa2ryemcr" path="res://Assets/Art/bridge_preview_up2.png" id="12_lmob5"]
 [ext_resource type="Texture2D" uid="uid://ddifcfwyi1h7g" path="res://Assets/Art/bridge_preview_side1.png" id="13_j1c1n"]
 [ext_resource type="Texture2D" uid="uid://bnbw6qr04v03a" path="res://Assets/Art/bridge_preview_up1.png" id="13_nn61t"]
+[ext_resource type="Texture2D" uid="uid://q3gjq0y2a845" path="res://Assets/Art/cart/cart_up1.png" id="17_0m20w"]
+[ext_resource type="Texture2D" uid="uid://b5byofaix6b0y" path="res://Assets/Art/cart/cart_up2.png" id="18_cre3r"]
+[ext_resource type="Texture2D" uid="uid://bsy0pl2nvw8ig" path="res://Assets/Art/cart/cart_down1.png" id="19_hbwra"]
+[ext_resource type="Texture2D" uid="uid://btmxmx3tjkld4" path="res://Assets/Art/cart/cart_down2.png" id="20_e4xsx"]
+[ext_resource type="Texture2D" uid="uid://fhkbypwbluyq" path="res://Assets/Art/cart/cart_left1.png" id="21_csiu0"]
+[ext_resource type="Texture2D" uid="uid://b4udrt47a1nod" path="res://Assets/Art/cart/cart_left2.png" id="22_80k16"]
+[ext_resource type="Texture2D" uid="uid://dlhpykvhkqyb5" path="res://Assets/Art/cart/cart_right1.png" id="23_jj5c2"]
+[ext_resource type="Texture2D" uid="uid://dylby33nuxp2h" path="res://Assets/Art/cart/cart_right2.png" id="24_tmwr6"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5g2a6"]
 animations = [{
@@ -25,6 +35,20 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("2_6h6hu")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 1.5
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qh40c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_51nit")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2vli2")
 }],
 "loop": true,
 "name": &"new_animation",
@@ -133,22 +157,92 @@ animations = [{
 "speed": 4.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_rktmj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_0m20w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_cre3r")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.5
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1s77j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("19_hbwra")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_e4xsx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.5
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8pv38"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("21_csiu0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_80k16")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.5
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i5m8b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_jj5c2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_tmwr6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.5
+}]
+
 [node name="player" type="CharacterBody2D"]
 z_index = 1
 y_sort_enabled = true
 script = ExtResource("1_cc23h")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="idle_left" type="AnimatedSprite2D" parent="."]
 process_mode = 3
 light_mask = 2
 visibility_layer = 2
 sprite_frames = SubResource("SpriteFrames_5g2a6")
 animation = &"new_animation"
 autoplay = "new_animation"
-frame = 1
-frame_progress = 0.451506
+frame_progress = 0.977295
 
-[node name="Playershadow" type="Sprite2D" parent="AnimatedSprite2D"]
+[node name="Playershadow" type="Sprite2D" parent="idle_left"]
+modulate = Color(1, 1, 1, 0.556863)
+show_behind_parent = true
+texture = ExtResource("5_o4ege")
+
+[node name="idle_right" type="AnimatedSprite2D" parent="."]
+process_mode = 3
+visible = false
+light_mask = 2
+visibility_layer = 2
+sprite_frames = SubResource("SpriteFrames_qh40c")
+animation = &"new_animation"
+autoplay = "new_animation"
+frame_progress = 0.84191
+
+[node name="Playershadow" type="Sprite2D" parent="idle_right"]
 modulate = Color(1, 1, 1, 0.556863)
 show_behind_parent = true
 texture = ExtResource("5_o4ege")
@@ -238,3 +332,32 @@ z_as_relative = false
 position = Vector2(8, 0)
 sprite_frames = SubResource("SpriteFrames_wvsp8")
 frame_progress = 0.959101
+
+[node name="riding_up" type="AnimatedSprite2D" parent="."]
+visible = false
+light_mask = 2
+visibility_layer = 2
+position = Vector2(1, -4)
+sprite_frames = SubResource("SpriteFrames_rktmj")
+offset = Vector2(-0.5, 0)
+
+[node name="riding_down" type="AnimatedSprite2D" parent="."]
+visible = false
+light_mask = 2
+visibility_layer = 2
+position = Vector2(-1, -4)
+sprite_frames = SubResource("SpriteFrames_1s77j")
+
+[node name="riding_left" type="AnimatedSprite2D" parent="."]
+visible = false
+light_mask = 2
+visibility_layer = 2
+position = Vector2(-1, -4)
+sprite_frames = SubResource("SpriteFrames_8pv38")
+
+[node name="riding_right" type="AnimatedSprite2D" parent="."]
+visible = false
+light_mask = 2
+visibility_layer = 2
+position = Vector2(1, -4)
+sprite_frames = SubResource("SpriteFrames_i5m8b")

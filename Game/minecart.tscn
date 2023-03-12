@@ -1,0 +1,114 @@
+[gd_scene load_steps=17 format=3 uid="uid://dxa1ixshuhr4r"]
+
+[ext_resource type="Texture2D" uid="uid://cwj4waniaeq67" path="res://Assets/Art/cart/cart_up_empty.png" id="1_2nk2w"]
+[ext_resource type="Texture2D" uid="uid://c4a3lvo4b4srn" path="res://Assets/Art/rails/rail_up.png" id="1_xvw2o"]
+[ext_resource type="Texture2D" uid="uid://bbu3apxscbfat" path="res://Assets/Art/rails/rail_side.png" id="2_w3h3e"]
+[ext_resource type="Texture2D" uid="uid://bbmx0xl324y4d" path="res://Assets/Art/cart/cart_side_empty.png" id="2_wno37"]
+[ext_resource type="Texture2D" uid="uid://q3gjq0y2a845" path="res://Assets/Art/cart/cart_up1.png" id="5_613g6"]
+[ext_resource type="Texture2D" uid="uid://b5byofaix6b0y" path="res://Assets/Art/cart/cart_up2.png" id="6_wipv7"]
+[ext_resource type="Texture2D" uid="uid://bsy0pl2nvw8ig" path="res://Assets/Art/cart/cart_down1.png" id="7_oea0k"]
+[ext_resource type="Texture2D" uid="uid://btmxmx3tjkld4" path="res://Assets/Art/cart/cart_down2.png" id="8_epegf"]
+[ext_resource type="Texture2D" uid="uid://fhkbypwbluyq" path="res://Assets/Art/cart/cart_left1.png" id="9_o8bb2"]
+[ext_resource type="Texture2D" uid="uid://b4udrt47a1nod" path="res://Assets/Art/cart/cart_left2.png" id="10_34xwi"]
+[ext_resource type="Texture2D" uid="uid://dlhpykvhkqyb5" path="res://Assets/Art/cart/cart_right1.png" id="11_cky4y"]
+[ext_resource type="Texture2D" uid="uid://dylby33nuxp2h" path="res://Assets/Art/cart/cart_right2.png" id="12_8ta4u"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mnqh7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_613g6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_wipv7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.5
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l2u6b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_oea0k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_epegf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.5
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0khif"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_o8bb2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_34xwi")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.5
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nl6lu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_cky4y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_8ta4u")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.5
+}]
+
+[node name="minecart" type="Sprite2D"]
+
+[node name="RailUp" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("1_xvw2o")
+
+[node name="RailSide" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("2_w3h3e")
+
+[node name="empty_up" type="Sprite2D" parent="."]
+position = Vector2(0, -2.5)
+texture = ExtResource("1_2nk2w")
+
+[node name="empty_side" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -1.5)
+texture = ExtResource("2_wno37")
+
+[node name="riding_up" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(1, -4)
+sprite_frames = SubResource("SpriteFrames_mnqh7")
+frame_progress = 0.148744
+offset = Vector2(-0.5, 0)
+
+[node name="riding_down" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-1, -4)
+sprite_frames = SubResource("SpriteFrames_l2u6b")
+frame_progress = 0.287928
+
+[node name="riding_left" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-1, -4)
+sprite_frames = SubResource("SpriteFrames_0khif")
+frame_progress = 0.494209
+
+[node name="riding_right" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(1, -4)
+sprite_frames = SubResource("SpriteFrames_nl6lu")
+frame_progress = 0.267849
