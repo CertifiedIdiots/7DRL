@@ -1,2 +1,4 @@
 res://Main.tscn
 res://Game/tile_map.gd
+res://Game/bomb.tscn
+res://Game/wall_block.tscn
