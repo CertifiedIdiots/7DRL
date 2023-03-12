@@ -1,3 +1,5 @@
+res://Game/lootcrate.gd
+res://Game/lootcrate.tscn
 res://Main.tscn
 res://Game/tile_map.tscn
 res://Game/lava.tscn
@@ -5,9 +7,11 @@ res://Game/rail.tscn
 res://Game/character.tscn
 res://Game/wall_block.tscn
 res://Game/minecart.tscn
+res://Game/bomb.tscn
 res://Game/player.gd
-res://Game/lootcrate.tscn
-res://Game/lootcrate.gd
+res://Game/rail.gd
 res://Game/lava.gd
-res://Game/tile_map.gd
+res://Game/main_menu.tscn
 res://Game/game.gd
+res://Game/menu.gd
+res://Game/bomb.gd

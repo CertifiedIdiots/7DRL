@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkswrs2uj5ovu"]
+[gd_scene load_steps=7 format=3 uid="uid://bkswrs2uj5ovu"]
 
 [ext_resource type="Texture2D" uid="uid://dt0ns6qnn3sdr" path="res://Assets/Art/crate1.png" id="1_465y0"]
 [ext_resource type="Script" path="res://Game/lootcrate.gd" id="1_oa8xs"]
@@ -19,17 +19,34 @@ animations = [{
 "speed": 2.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3qvdx"]
+size = Vector2(5, 5)
+
 [node name="lootcrate" type="Sprite2D"]
+z_index = 1
+y_sort_enabled = true
 script = ExtResource("1_oa8xs")
 
 [node name="crate" type="AnimatedSprite2D" parent="."]
 light_mask = 2
 visibility_layer = 2
+z_index = 1
+y_sort_enabled = true
 position = Vector2(0, -1.5)
 sprite_frames = SubResource("SpriteFrames_38tfi")
-frame_progress = 0.514294
+frame_progress = 0.3584
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 color = Color(1, 0.647059, 0.121569, 1)
 energy = 2.0
 texture = ExtResource("3_k4skr")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+y_sort_enabled = true
+shape = SubResource("RectangleShape2D_3qvdx")
+
+[connection signal="body_entered" from="Area2D" to="." method="pickup"]

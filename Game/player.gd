@@ -47,11 +47,14 @@ func _process(delta):
 	$bomb.position = ray.target_position
 	
 	for walls in $"/root/Node2D/Walls".get_children():
-		walls.get_child(1).set_visible(false)
+		walls.get_node("overlay").set_visible(false)
 		
-	if mine_mode and ray.is_colliding():
-		if ray.get_collider().is_in_group("wall"):
-			ray.get_collider().get_parent().selected()
+	if mine_mode and ray2.is_colliding():
+		if ray2.get_collider().is_in_group("wall"):
+			ray2.get_collider().get_parent().selected()
+			
+	for rails in $"/root/Node2D/Rails".get_children():
+		rails.get_node("overlay").set_visible(false)
 			
 	if rail_mode:
 		var directions = [
@@ -60,12 +63,16 @@ func _process(delta):
 			Vector2(-8, 0),
 			Vector2(8, 0)
 			]
-		if !ray.is_colliding() or ray2.get_collider().is_in_group("lava"):
+		if !ray.is_colliding() or ray2.get_collider().is_in_group("lava") or ray2.get_collider().is_in_group("rail"):
 			for direction in directions:
 				if ray.target_position == direction and !ray2.is_colliding():
 					$rail.get_child(directions.find(direction)).set_visible(true)
 				else:
 					$rail.get_child(directions.find(direction)).set_visible(false)
+				if ray2.is_colliding():
+					if ray2.get_collider().is_in_group("rail"):
+						
+						ray2.get_collider().get_parent().selected()
 		else:
 			$rail/up.set_visible(false)
 			$rail/down.set_visible(false)
@@ -134,7 +141,6 @@ func mine():
 				ray.get_collider().get_parent().queue_free()
 				mine_mode = false
 				game.mine_cooldown += 3
-
 func bomb():
 	if bomb_mode and bomb_valid:
 		var bomb = bomb_object.instantiate()
@@ -164,6 +170,11 @@ func rail():
 		else:
 			rail.get_child(1).set_visible(false)
 		rail.set_position(target_pos)
-		game.add_child(rail)
+		game.get_node("Rails").add_child(rail)
 		rail_mode = false
 		game.rails -= 1
+	if rail_mode and ray2.is_colliding():
+		if ray2.get_collider().is_in_group("rail"):
+			if ray2.get_collider().get_parent().rail_selected:
+				ray2.get_collider().get_parent().queue_free()
+				rail_mode = false

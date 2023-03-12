@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://drxpwwjamqsnu"]
+
+[ext_resource type="Script" path="res://Game/menu.gd" id="1_7ol26"]
+[ext_resource type="Texture2D" uid="uid://3exipdi08niv" path="res://Assets/Art/main_menu.png" id="1_rrlfb"]
+
+[sub_resource type="Theme" id="Theme_k15ob"]
+default_font_size = 96
+/colors/color = Color(0.0823529, 0.705882, 0.886275, 1)
+
+[sub_resource type="Theme" id="Theme_trut5"]
+default_font_size = 32
+
+[sub_resource type="Theme" id="Theme_kvt4y"]
+default_font_size = 64
+
+[node name="menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7ol26")
+
+[node name="MainMenu" type="Sprite2D" parent="."]
+texture = ExtResource("1_rrlfb")
+centered = false
+
+[node name="buttons" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 108.0
+offset_top = 198.0
+offset_right = 1059.0
+offset_bottom = 481.0
+size_flags_horizontal = 3
+
+[node name="play" type="MenuButton" parent="buttons"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_k15ob")
+text = "PLAY"
+flat = false
+
+[node name="dead" type="MenuButton" parent="buttons"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme = SubResource("Theme_trut5")
+text = "You were burnt to a crisp."
+
+[node name="restart" type="MenuButton" parent="buttons"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_kvt4y")
+text = "PLAY AGAIN"
+
+[connection signal="pressed" from="buttons/play" to="." method="play"]
+[connection signal="pressed" from="buttons/restart" to="." method="restart"]

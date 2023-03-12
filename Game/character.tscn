@@ -216,12 +216,16 @@ animations = [{
 [node name="player" type="CharacterBody2D"]
 z_index = 1
 y_sort_enabled = true
+collision_layer = 97
+collision_mask = 97
 script = ExtResource("1_cc23h")
 
 [node name="idle_left" type="AnimatedSprite2D" parent="."]
 process_mode = 3
 light_mask = 2
 visibility_layer = 2
+z_index = 1
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_5g2a6")
 animation = &"new_animation"
 autoplay = "new_animation"
@@ -230,6 +234,7 @@ frame_progress = 0.977295
 [node name="Playershadow" type="Sprite2D" parent="idle_left"]
 modulate = Color(1, 1, 1, 0.556863)
 show_behind_parent = true
+z_index = -1
 texture = ExtResource("5_o4ege")
 
 [node name="idle_right" type="AnimatedSprite2D" parent="."]
@@ -237,6 +242,8 @@ process_mode = 3
 visible = false
 light_mask = 2
 visibility_layer = 2
+z_index = 1
+y_sort_enabled = true
 sprite_frames = SubResource("SpriteFrames_qh40c")
 animation = &"new_animation"
 autoplay = "new_animation"
@@ -245,6 +252,7 @@ frame_progress = 0.84191
 [node name="Playershadow" type="Sprite2D" parent="idle_right"]
 modulate = Color(1, 1, 1, 0.556863)
 show_behind_parent = true
+z_index = -1
 texture = ExtResource("5_o4ege")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -279,6 +287,7 @@ modulate = Color(1, 1, 1, 0.67451)
 show_behind_parent = true
 light_mask = 2
 visibility_layer = 2
+z_index = 1
 y_sort_enabled = true
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_r8tcp")
@@ -289,7 +298,6 @@ process_priority = 1
 modulate = Color(1, 1, 1, 0.67451)
 light_mask = 2
 visibility_layer = 2
-z_index = -1
 sprite_frames = SubResource("SpriteFrames_7ago7")
 
 [node name="rail" type="Sprite2D" parent="."]

@@ -36,6 +36,7 @@ physics_layer_0/physics_material = SubResource("PhysicsMaterial_hd8rj")
 sources/0 = SubResource("TileSetAtlasSource_ij8ul")
 
 [node name="TileMap" type="TileMap"]
+y_sort_enabled = true
 tile_set = SubResource("TileSet_lr216")
 format = 2
 layer_0/name = "ground"
@@ -56,4 +57,4 @@ layer_2/z_index = 0
 layer_2/tile_data = PackedInt32Array()
 
 [node name="lootcrate" parent="." instance=ExtResource("2_2hecy")]
-position = Vector2(84, 140)
+position = Vector2(84, 116)

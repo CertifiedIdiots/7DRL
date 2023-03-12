@@ -7,6 +7,9 @@ extends Node
 @export var bombs = 10
 @export var rails = 30
 
+func _ready():
+	pass
+
 signal pass_time
 
 func end_turn():

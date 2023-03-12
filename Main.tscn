@@ -17,6 +17,8 @@ script = ExtResource("3_e5sj3")
 
 [node name="Lava" type="Node2D" parent="."]
 
+[node name="Rails" type="Node2D" parent="."]
+
 [node name="character" parent="." instance=ExtResource("2_126wc")]
 position = Vector2(64, 64)
 

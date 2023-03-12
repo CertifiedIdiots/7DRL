@@ -5,10 +5,17 @@ extends Node
 
 @onready var variants = [$up, $side, $down_right, $down_left, $up_right, $up_left]
 
+var rail_selected = false
 var nearby_rails = []
 
 func ready():
-	pass
+	$overlay.set_visible(false)
+	$overlay.play()
+
+func selected():
+	rail_selected = true
+	$overlay.set_visible(true)
+	$overlay.play()
 
 func _process(delta):
 	if $ray_up.is_colliding():

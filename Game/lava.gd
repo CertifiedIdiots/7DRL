@@ -1,5 +1,7 @@
 extends Node
 
+@onready var player = $"/root/Node2D/character"
+
 @onready var lava_variants = $types.get_children()
 var rng = RandomNumberGenerator.new()
 var selected_variant = null
@@ -31,6 +33,10 @@ func _process(delta):
 	else:
 		$PointLight2D.set_visible(false)
 	
-func burn():
-	pass
-
+func burn(body):
+	var menu = preload("res://Game/main_menu.tscn")
+	if body == player:
+		player.queue_free()
+		get_tree().change_scene_to_file("res://Game/main_menu.tscn")
+#		menu.get_parent().get_child(0).set_visible(false)
+		print("YOU DIED")

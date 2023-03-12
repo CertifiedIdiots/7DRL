@@ -88,6 +88,8 @@ script = ExtResource("1_bbuuw")
 
 [node name="bomb1" type="AnimatedSprite2D" parent="."]
 light_mask = 2
+z_index = 1
+y_sort_enabled = true
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_76o5c")
 frame_progress = 0.770754
@@ -95,6 +97,8 @@ frame_progress = 0.770754
 [node name="bomb2" type="AnimatedSprite2D" parent="."]
 visible = false
 light_mask = 2
+z_index = 1
+y_sort_enabled = true
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_snesk")
 frame_progress = 0.231033
@@ -102,6 +106,8 @@ frame_progress = 0.231033
 [node name="bomb3" type="AnimatedSprite2D" parent="."]
 visible = false
 light_mask = 2
+z_index = 1
+y_sort_enabled = true
 position = Vector2(0, -1)
 sprite_frames = SubResource("SpriteFrames_61sk8")
 frame_progress = 0.267753
@@ -113,13 +119,15 @@ texture = ExtResource("4_gmvrb")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(0, 1)
+collision_layer = 65
+collision_mask = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 y_sort_enabled = true
 shape = SubResource("RectangleShape2D_d6ses")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+z_index = 1
 occluder = SubResource("OccluderPolygon2D_u8h06")
 
 [node name="radius" type="Area2D" parent="."]
